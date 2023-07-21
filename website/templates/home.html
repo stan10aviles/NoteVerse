@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block title %}NoteVerse{% endblock %} {% block content
+%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<br>
+<div class="container">
+
+  <div class="filter-box">
+    <div class="filter-section">
+      <input type="text" id="filterInput" placeholder="Search with keywords">
+      <button type="button" onclick="searchNote({{ user_id }})">Search</button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4 border-dark bg-light sketchy-border">
+        <div class="card-body">
+          <h5 class="card-title">Create Note</h5>
+          <form method="POST">
+            <div class="form-group">
+              <label for="note-title">Title</label>
+              <input type="text" class="form-control" name="note-title" id="note-title"
+                value="{{ form_data.note-title if form_data else '' }}" required />
+            </div>
+            <div class="form-group">
+              <label for="note-content">Content</label>
+              <div id="editor">
+                <textarea class="form-control" name="note" id="note" rows="4"
+                  value="{{ form_data.note if form_data else '' }}" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Note</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mb-4 border-dark bg-light sketchy-border">
+        <div class="card-body">
+          <h5 class="card-title" id="notes">Your Notes</h5>
+          {% for note in user.notes %}
+          <div class="note-item">
+            <h6 class="note-title" id="noteTitle{{ note.id }}" contentEditable="false">{{ note.data_title }}</h6>
+            <p class="note-content" id="noteContent{{ note.id }}" contentEditable="false">{{ note.data }}</p>
+            <button id="editButton{{ note.id }}" type="button" class="btn btn-danger btn-sm editButton"
+              onClick="toggleEdit({{ note.id }})">Edit<i class="fa fa-edit" aria-hidden="true"></i></button>
+
+            <button id="saveButton{{ note.id }}" type="button" class="btn btn-success btn-sm saveButton"
+              onClick="saveChanges({{ note.id }})">Save Changes<i class="fa fa-save" aria-hidden="true"></i></button>
+            <button id="cancelButton{{ note.id }}" type="button" class="btn btn-secondary btn-sm cancelButton"
+              onClick="cancelEdit({{ note.id }})">Cancel<i class="fa fa-times" aria-hidden="true"></i></button>
+
+            <button type="button" class="btn btn-danger btn-sm" onClick="deleteNote({{ note.id }})">Delete<i
+                class="fa fa-trash" aria-hidden="true"></i></button>
+
+            <button id="copyButton{{ note.id }}" type="button" class="btn btn-danger btn-sm toolTip"
+              onClick="copyNote({{ note.id }})">
+              <span class="tooltiptext" id="myToolTip{{ note.id }}">Clip</span>Copy<i class="fa fa-copy"
+                aria-hidden="true"></i></button>
+
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    </form>
+
+    {% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+
+    {% endblock %}
+
+    {% endblock %}

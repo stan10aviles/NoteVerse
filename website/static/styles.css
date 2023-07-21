@@ -1,0 +1,147 @@
+/* Custom styles for the create notes/notes section */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #474f53;
+  border-color: #474f53;
+}
+
+.btn-primary:hover {
+  background-color: #21201d;
+  border-color: #21201d;
+}
+
+.note-item {
+  background-color: #e6e6e6;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.note-item:hover {
+  background-color: #d8d8d8;
+}
+
+.note-item h6 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.note-item p {
+  font-size: 14px;
+}
+
+.btn-danger {
+  background-color: #474f53;
+  border-color: #474f53;
+}
+
+.btn-danger:hover {
+  background-color: #21201d;
+  border-color: #21201d;
+}
+
+.note-item button i {
+  margin-left: 5px;
+}
+
+.saveButton,
+.cancelButton {
+  display: none;
+}
+
+.editButton {
+  display: inline-block;
+}
+
+
+
+.toolTip {
+  position: relative;
+  display: inline-block;
+}
+
+.toolTip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.toolTip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.toolTip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Styles for the "Filter By" section */
+
+.filter-box {
+  border: 1px solid rgb(52, 58, 64);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.filter-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+#filterInput {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+#filterInput::placeholder {
+  color: #aaa;
+}
+
+.filter-section button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #474f53;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter-section button:hover {
+  background-color: #21201d;
+}
+
+

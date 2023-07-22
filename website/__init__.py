@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
-from .config import SECRET_KEY
+from decouple import config
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -10,7 +10,7 @@ DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = SECRET_KEY
+    app.config['SECRET_KEY'] = config("SECRET_KEY")
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
